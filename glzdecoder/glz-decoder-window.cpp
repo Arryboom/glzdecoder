@@ -81,8 +81,8 @@ void GlzDecoderWindow::glz_decoder_window_resize(void)
 	int i, new_slot;
 
 	printf("%s: array resize %u -> %u \n", __FUNCTION__, nimages, nimages * 2);
-	GlzImage** new_images = (GlzImage * *) malloc(sizeof(void*) * nimages * 2);
-
+	GlzImage** new_images = (GlzImage * *) malloc(sizeof(GlzImage*) * nimages * 2);
+    memset(new_images, 0, sizeof(GlzImage*) * nimages * 2);
 	for (i = 0; i < nimages; i++) {
 		if (images[i] == NULL) {
 			/*
